@@ -17,6 +17,10 @@ const routes: RouteRecordRaw[] = [
     path: '/encrypt',
     component: loadRoute('encrypt'),
   },
+  {
+    path: '/settings',
+    component: loadRoute('settings'),
+  },
 ];
 
 const router = createRouter({
