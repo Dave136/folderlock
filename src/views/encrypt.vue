@@ -1,12 +1,21 @@
 <template>
-  <section class="p-4 block h-full">
-    <div class="flex flex-col justify-center items-center h-full gap-4">
-      <ph-drop :size="100" weight="fill" />
-      <p class="text-sm">Encrypt files to mantain it secure</p>
-    </div>
-  </section>
+  <view-wrapper>
+    <blank-message message="Encrypt files to mantain it secure">
+      <template #icon>
+        <ph-file-lock :size="100" weight="fill" />
+      </template>
+    </blank-message>
+    <actions-wrapper>
+      <app-button>Create</app-button>
+      <app-button>Open</app-button>
+    </actions-wrapper>
+  </view-wrapper>
 </template>
 
 <script lang="ts" setup>
-import { PhDrop } from '@phosphor-icons/vue';
+import { PhFileLock } from '@phosphor-icons/vue';
+import ViewWrapper from '@/components/view-wrapper.vue';
+import BlankMessage from '@/components/blank-message.vue';
+import ActionsWrapper from '@/components/actions-wrapper.vue';
+import AppButton from '@/components/app-button.vue';
 </script>
