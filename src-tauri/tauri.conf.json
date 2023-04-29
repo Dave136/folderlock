@@ -13,9 +13,66 @@
   "tauri": {
     "allowlist": {
       "all": false,
+      "clipboard": {
+        "all": false,
+        "readText": false,
+        "writeText": false
+      },
+      "dialog": {
+        "all": false,
+        "ask": false,
+        "confirm": false,
+        "message": false,
+        "open": false,
+        "save": false
+      },
+      "fs": {
+        "all": false,
+        "copyFile": false,
+        "createDir": true,
+        "exists": false,
+        "readDir": true,
+        "readFile": false,
+        "removeDir": false,
+        "removeFile": false,
+        "renameFile": false,
+        "scope": ["$APP/*", "$CACHE/*"],
+        "writeFile": true
+      },
+      "globalShortcut": {
+        "all": false
+      },
+      "http": {
+        "all": false,
+        "request": false,
+        "scope": []
+      },
+      "notification": {
+        "all": true
+      },
+      "os": {
+        "all": true
+      },
+      "path": {
+        "all": true
+      },
+      "process": {
+        "all": false,
+        "exit": false,
+        "relaunch": true,
+        "relaunchDangerousAllowSymlinkMacos": false
+      },
+      "protocol": {
+        "all": false,
+        "asset": false,
+        "assetScope": []
+      },
       "shell": {
         "all": false,
-        "open": true
+        "execute": false,
+        "open": ".*",
+        "scope": [],
+        "sidecar": false
       }
     },
     "bundle": {
@@ -31,7 +88,11 @@
       "targets": "all"
     },
     "security": {
-      "csp": null
+      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
+    },
+    "systemTray": {
+      "iconPath": "icons/icon.ico",
+      "iconAsTemplate": true
     },
     "updater": {
       "active": false

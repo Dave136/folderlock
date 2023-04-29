@@ -1,6 +1,6 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import HideView from '@/views/hide.vue';
-import { useStore } from '@/composables/use-tauri-store';
+import { invoke } from '@tauri-apps/api';
 
 const loadRoute = async (route: string) => import(`@/views/${route}.vue`);
 
@@ -29,11 +29,16 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) => {
-  const store = useStore('password');
-  const canAccess = (await store.get()) as string;
+  try {
+    const canAccess = await invoke('has_app_password');
 
-  if (!canAccess.length && to.path !== '/auth') {
-    return '/auth';
+    console.log({ canAccess });
+
+    if (!canAccess && to.path !== '/auth') {
+      return '/auth';
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 

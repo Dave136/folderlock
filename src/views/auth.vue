@@ -1,16 +1,16 @@
 <template>
   <section class="max-w-sm mx-auto flex justify-center items-center h-full">
     <form
-      class="bg-green-800 mt-36 w-full p-8 rounded-md bg-zinc-700"
+      class="mt-8 w-full p-8 rounded-md bg-[#282c34]"
       @keyup.enter="onSubmit"
     >
-      <h2 class="text-2xl text-center">Set app password</h2>
+      <h2 class="text-xl text-center">Set app password</h2>
       <div class="flex flex-col mt-8">
         <label for="password">Password</label>
         <input
           name="password"
           type="password"
-          class="p-2 mt-2 rounded-md bg-zinc-600 ring ring-transparent"
+          class="p-2 mt-2 rounded-md border bg-transparent border-zinc-700 ring ring-transparent"
           v-model="password"
         />
       </div>
@@ -19,7 +19,7 @@
         <input
           name="repeatPassword"
           type="password"
-          class="p-2 mt-2 rounded-md bg-zinc-600 ring ring-transparent"
+          class="p-2 mt-2 rounded-md bg-transparent border border-zinc-700 ring ring-transparent"
           v-model="repeatPassword"
         />
       </div>
@@ -34,7 +34,7 @@
       <div class="flex flex-col mt-8">
         <button
           type="button"
-          class="!bg-cyan-700 p-4 rounded-md transition-colors hover:!bg-cyan-800"
+          class="!bg-zinc-700 p-4 rounded-md transition-colors hover:!bg-zinc-800"
           @click.prevent="onSubmit"
         >
           Save
@@ -49,6 +49,7 @@ import { useForm, useField } from 'vee-validate';
 import { object, string, ref } from 'yup';
 import { useRouter } from 'vue-router';
 import { useStore } from '@/composables/use-tauri-store';
+import { invoke } from '@tauri-apps/api/tauri';
 
 const router = useRouter();
 const store = useStore('password');
@@ -75,6 +76,7 @@ const [password, repeatPassword] = useFieldModel([
 
 const onSubmit = handleSubmit(async (data) => {
   store.set(data.password);
+  await invoke('set_app_password', { password: data.password });
   router.push('/');
 });
 </script>
