@@ -1,5 +1,5 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
-import HomeView from '@/views/home.vue';
+import HideView from '@/views/hide.vue';
 import { useStore } from '@/composables/use-tauri-store';
 
 const loadRoute = async (route: string) => import(`@/views/${route}.vue`);
@@ -7,11 +7,15 @@ const loadRoute = async (route: string) => import(`@/views/${route}.vue`);
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: HomeView,
+    component: HideView,
   },
   {
     path: '/auth',
     component: loadRoute('auth'),
+  },
+  {
+    path: '/encrypt',
+    component: loadRoute('encrypt'),
   },
 ];
 
