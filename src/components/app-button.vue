@@ -15,7 +15,7 @@
 import { computed, useSlots } from 'vue';
 
 interface Props {
-  type: 'button' | 'submit';
+  type?: 'button' | 'submit';
   class?: string;
 }
 

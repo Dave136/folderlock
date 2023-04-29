@@ -13,6 +13,7 @@
     "@phosphor-icons/vue": "^2.0.1",
     "@tauri-apps/api": "^1.2.0",
     "@unocss/reset": "^0.51.8",
+    "@vueuse/core": "^10.1.0",
     "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store",
     "vee-validate": "^4.8.6",
     "vue": "^3.2.47",
