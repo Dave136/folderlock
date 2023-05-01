@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
-import vue from '@vitejs/plugin-vue';
 import { fileURLToPath, URL } from 'url';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import preprocess from 'svelte-preprocess';
 
 const mobile =
   process.env.TAURI_PLATFORM === 'android' ||
@@ -9,12 +10,18 @@ const mobile =
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [vue(), UnoCSS()],
+  plugins: [
+    svelte({
+      preprocess: preprocess(),
+    }),
+    UnoCSS(),
+  ],
 
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '~': fileURLToPath(new URL('./src', import.meta.url)),
+      $lib: fileURLToPath(new URL('./src/lib', import.meta.url)),
     },
   },
 

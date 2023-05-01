@@ -3,21 +3,18 @@
 
 mod app;
 
-use std::path::PathBuf;
-
 use app::{
-    commands::{has_app_password, set_app_password},
-    hide::hide_file,
+    commands::{has_app_password, hide_file, set_app_password},
+    config::Config,
 };
 use tauri_plugin_store;
 
 use crate::app::store::Store;
 
+const APP_NAME: &'static str = "folderlock";
+
 fn main() {
-    let path = PathBuf::from("/home/dave/.cache/folderlock/database")
-        .into_os_string()
-        .into_string()
-        .unwrap();
+    let config = Config::new(APP_NAME);
 
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -26,7 +23,8 @@ fn main() {
             has_app_password
         ])
         .plugin(tauri_plugin_store::Builder::default().build())
-        .manage(Store::new(path))
+        .manage(Store::new(config.path.store.clone()))
+        .manage(config)
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,7 +1,9 @@
-import { createApp } from "vue";
-import "virtual:uno.css";
-import "@unocss/reset/tailwind.css";
-import App from "./app.vue";
-import router from "./router";
+import App from './App.svelte';
+import 'virtual:uno.css';
+import '@unocss/reset/tailwind.css';
 
-createApp(App).use(router).mount("#app");
+const app = new App({
+  target: document.body,
+});
+
+export default app;
