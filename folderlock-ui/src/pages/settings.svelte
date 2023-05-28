@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import ViewWrapper from '@/lib/ViewWrapper.svelte';
+  import ViewWrapper from '@/lib/components/app/ViewWrapper.svelte';
   import ActionsWrapper from '@/lib/components/app/ActionsWrapper.svelte';
   import Button from '@/lib/components/Button.svelte';
   import Checkbox from '@/lib/components/Checkbox.svelte';

@@ -7,6 +7,7 @@ use app::{
     commands::{has_app_password, hide_file, set_app_password},
     config::Config,
 };
+// use folderlock::add;
 use tauri_plugin_store;
 
 use crate::app::store::Store;
