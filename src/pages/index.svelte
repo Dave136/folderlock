@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Pencil, TrashSimple, File } from 'phosphor-svelte';
-  import ViewWrapper from '$lib/ViewWrapper.svelte';
+  import ViewWrapper from '$lib/components/app/ViewWrapper.svelte';
   import BlankMessage from '@/lib/components/app/BlankMessage.svelte';
   import Content from '@/lib/components/app/Content.svelte';
   import TableWrapper from '$lib/components/table/TableWrapper.svelte';

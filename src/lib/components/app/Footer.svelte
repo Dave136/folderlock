@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { InstagramLogo, GithubLogo, TwitterLogo } from 'phosphor-svelte';
-  import VueSvg from '../../assets/vue.svg';
+  import VueSvg from '~/assets/vue.svg';
 </script>
 
 <footer class="flex mx-4 items-center justify-between col-span-full">
